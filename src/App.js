@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Customizer from './Customizer';
+import Preview from './Preview';
 
 function App() {
+  const [customization, setCustomization] = useState({
+    background: '#ffffff',
+    text: '',
+    image: null,
+    material: 'silicone'
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Customizer onUpdate={setCustomization} />
+      <Preview customization={customization} />
     </div>
   );
 }
